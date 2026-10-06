@@ -20,16 +20,15 @@
     // Optional no-code alternative to the Stripe API key — one Payment Link per edition:
     // "PAYMENT_LINK_URL_COMPAT": "https://buy.stripe.com/XXXXXXXX",
     // "PAYMENT_LINK_URL_GENUINE": "https://buy.stripe.com/YYYYYYYY"
-  }
+  },
 
-  // Secrets are NOT set in this file. After deploying once, run:
-  //   npx wrangler secret put STRIPE_SECRET_KEY
-  // and paste your Stripe secret key (sk_test_... first, sk_live_... to go live).
+  // The store's own domain. Cloudflare provisions DNS and TLS automatically.
+  "routes": [
+    { "pattern": "persiainbricks.com", "custom_domain": true },
+    { "pattern": "www.persiainbricks.com", "custom_domain": true }
+  ]
 
-  // To attach your own domain after you register it on Cloudflare,
-  // uncomment and edit:
-  // ,"routes": [
-  //   { "pattern": "yourdomain.com", "custom_domain": true },
-  //   { "pattern": "www.yourdomain.com", "custom_domain": true }
-  // ]
+  // Secrets are NOT set in this file. After deploying once, set
+  // STRIPE_SECRET_KEY under the Worker's Settings → Variables and Secrets
+  // (or via: npx wrangler secret put STRIPE_SECRET_KEY).
 }
