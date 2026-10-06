@@ -49,7 +49,7 @@ a:focus-visible, button:focus-visible, select:focus-visible {
   outline-offset: 3px;
 }
 
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
 
@@ -132,7 +132,7 @@ nav.main a:hover { color: var(--limestone); }
 .stat .l { font-size: 0.85rem; color: var(--muted); }
 
 .hero-art { position: relative; }
-.hero-art img { border: 1px solid var(--line); border-radius: 2px; }
+.hero-art img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 2px; }
 .hero-art figcaption { font-size: 0.82rem; color: var(--muted); margin-top: 0.6rem; }
 
 /* stepped crenellation divider — the model's parapet */
@@ -163,6 +163,17 @@ section + section { border-top: 1px solid var(--line); }
 .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
 .gallery figure.wide { grid-column: 1 / -1; }
 .gallery img { border: 1px solid var(--line); border-radius: 2px; width: 100%; }
+.gallery figure.wide img {
+  /* The renders sit on pure black, so letterboxing on black reads as one panel. */
+  height: min(560px, 72vw);
+  object-fit: contain;
+  background: #000;
+}
+.gallery figure:not(.wide) img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #000;
+}
 .gallery figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
 @media (max-width: 680px) { .gallery { grid-template-columns: 1fr; } }
 
