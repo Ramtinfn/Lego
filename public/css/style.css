@@ -1,0 +1,262 @@
+/* Persepolis — Gate of All Nations storefront */
+
+:root {
+  --umber: #201712;
+  --umber-raised: #2a1e16;
+  --umber-deep: #170f0b;
+  --limestone: #e7d7ac;
+  --parchment: #efe4c9;
+  --body: rgba(239, 228, 201, 0.86);
+  --muted: rgba(239, 228, 201, 0.6);
+  --ember: #c1472a;
+  --ember-bright: #d85a39;
+  --turquoise: #4fb3aa;
+  --stone: #9a948a;
+  --line: rgba(231, 215, 172, 0.16);
+  --maxw: 1080px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+body {
+  background: var(--umber);
+  color: var(--body);
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: "Marcellus", "Spectral", serif; font-weight: 400; color: var(--limestone); }
+
+.fa {
+  font-family: "Vazirmatn", "Spectral", serif;
+  direction: rtl;
+  unicode-bidi: isolate;
+}
+
+a { color: var(--turquoise); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, select:focus-visible {
+  outline: 2px solid var(--turquoise);
+  outline-offset: 3px;
+}
+
+img { max-width: 100%; display: block; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
+
+/* ---------- header ---------- */
+header.site {
+  border-bottom: 1px solid var(--line);
+  background: var(--umber-deep);
+}
+.site-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+.wordmark { display: flex; flex-direction: column; line-height: 1.3; }
+.wordmark .en { font-family: "Marcellus", serif; font-size: 1.05rem; color: var(--limestone); letter-spacing: 0.02em; }
+.wordmark .fa { font-size: 0.9rem; color: var(--muted); }
+nav.main { display: flex; gap: 1.4rem; align-items: center; font-size: 0.95rem; }
+nav.main a { color: var(--body); }
+nav.main a:hover { color: var(--limestone); }
+@media (max-width: 760px) { nav.main .page-link { display: none; } }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: "Spectral", serif;
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0.7rem 1.5rem;
+  border: 1px solid var(--ember-bright);
+  background: var(--ember);
+  color: #fff6e8;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 150ms ease;
+}
+.btn:hover { background: var(--ember-bright); text-decoration: none; }
+.btn.quiet {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--limestone);
+}
+.btn.quiet:hover { border-color: var(--limestone); background: transparent; }
+.btn[disabled] { opacity: 0.6; cursor: wait; }
+
+/* ---------- hero ---------- */
+.hero { padding: 4.5rem 0 3.5rem; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 6fr);
+  gap: 3rem;
+  align-items: center;
+}
+@media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+.motto-fa {
+  font-size: clamp(1.6rem, 3.6vw, 2.5rem);
+  font-weight: 500;
+  color: var(--limestone);
+  line-height: 1.9;
+  margin-bottom: 1.1rem;
+}
+.motto-fa em { font-style: normal; color: var(--ember-bright); }
+.motto-en {
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+  line-height: 1.45;
+  margin-bottom: 1.4rem;
+}
+.hero-sub { max-width: 34rem; margin-bottom: 1.8rem; }
+
+.buy-line { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
+.price { font-family: "Marcellus", serif; font-size: 1.6rem; color: var(--limestone); }
+.price .note { font-family: "Spectral", serif; font-size: 0.85rem; color: var(--muted); display: block; line-height: 1.4; }
+
+.stats { display: flex; gap: 2.25rem; flex-wrap: wrap; }
+.stat .n { font-family: "Marcellus", serif; font-size: 1.35rem; color: var(--limestone); display: block; }
+.stat .l { font-size: 0.85rem; color: var(--muted); }
+
+.hero-art { position: relative; }
+.hero-art img { border: 1px solid var(--line); border-radius: 2px; }
+.hero-art figcaption { font-size: 0.82rem; color: var(--muted); margin-top: 0.6rem; }
+
+/* stepped crenellation divider — the model's parapet */
+.kangura {
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='14' viewBox='0 0 56 14'%3E%3Cpath d='M0 14 V9 H8 V4 H16 V0 H40 V4 H48 V9 H56 V14 Z' fill='%23e7d7ac' fill-opacity='0.22'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center bottom;
+  margin: 0 auto;
+  max-width: var(--maxw);
+}
+
+/* ---------- sections ---------- */
+section { padding: 4rem 0; }
+section + section { border-top: 1px solid var(--line); }
+.section-title { font-size: 1.7rem; margin-bottom: 0.4rem; }
+.section-title-fa { color: var(--muted); font-size: 1rem; margin-bottom: 2rem; text-align: left; }
+
+/* story */
+.story-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+@media (max-width: 760px) { .story-cols { grid-template-columns: 1fr; gap: 2rem; } }
+.story-cols h3 { font-size: 1.15rem; margin-bottom: 0.7rem; }
+.story-cols .year { color: var(--ember-bright); }
+.story-cols .year-now { color: var(--turquoise); }
+.story-cols p + p { margin-top: 0.9rem; }
+
+/* gallery */
+.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.gallery figure.wide { grid-column: 1 / -1; }
+.gallery img { border: 1px solid var(--line); border-radius: 2px; width: 100%; }
+.gallery figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+@media (max-width: 680px) { .gallery { grid-template-columns: 1fr; } }
+
+/* details */
+.details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+@media (max-width: 760px) { .details-grid { grid-template-columns: 1fr; gap: 2rem; } }
+.details-grid h3 { font-size: 1.15rem; margin-bottom: 0.8rem; }
+.details-grid ul { list-style: none; }
+.details-grid li { padding: 0.45rem 0; border-bottom: 1px solid var(--line); }
+.details-grid li:last-child { border-bottom: 0; }
+
+/* shipping */
+.ship-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+@media (max-width: 680px) { .ship-grid { grid-template-columns: 1fr; } }
+.ship-card {
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 1.5rem 1.6rem;
+  background: var(--umber-raised);
+}
+.ship-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.ship-card .big { font-family: "Marcellus", serif; font-size: 1.9rem; color: var(--limestone); display: block; margin-bottom: 0.4rem; }
+.ship-card p { font-size: 0.95rem; }
+.ship-steps { margin-top: 2rem; }
+.ship-steps ol { margin-left: 1.2rem; }
+.ship-steps li { padding: 0.3rem 0; }
+
+/* order */
+#order .order-panel {
+  border: 1px solid var(--line);
+  background: var(--umber-raised);
+  border-radius: 2px;
+  padding: 2rem;
+  max-width: 560px;
+}
+.variants { display: flex; flex-direction: column; gap: 0.8rem; margin: 1.3rem 0 0.4rem; }
+.variant {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 1rem 1.1rem;
+  cursor: pointer;
+  background: var(--umber-deep);
+}
+.variant:has(input:checked) { border-color: var(--turquoise); }
+.variant input { accent-color: var(--turquoise); margin-right: 0.6rem; }
+.v-head { display: inline; }
+.v-name { font-family: "Marcellus", serif; color: var(--limestone); font-size: 1.02rem; }
+.v-price { font-family: "Marcellus", serif; color: var(--limestone); float: right; }
+.v-desc { display: block; font-size: 0.88rem; color: var(--muted); margin-top: 0.35rem; line-height: 1.55; }
+
+.order-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin: 1.2rem 0 0.8rem; }
+label[for="qty"] { color: var(--limestone); }
+select#qty {
+  background: var(--umber-deep);
+  color: var(--parchment);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 0.55rem 0.8rem;
+  font-family: "Spectral", serif;
+  font-size: 1rem;
+}
+.order-note { font-size: 0.85rem; color: var(--muted); margin-top: 0.9rem; }
+.order-error {
+  display: none;
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--ember);
+  border-radius: 2px;
+  font-size: 0.92rem;
+  color: var(--parchment);
+}
+.order-error.show { display: block; }
+
+/* faq */
+details.faq { border-bottom: 1px solid var(--line); padding: 0.9rem 0; }
+details.faq summary { cursor: pointer; color: var(--limestone); font-family: "Marcellus", serif; font-size: 1.05rem; }
+details.faq p { margin-top: 0.6rem; max-width: 46rem; }
+
+/* footer */
+footer.site {
+  border-top: 1px solid var(--line);
+  background: var(--umber-deep);
+  padding: 2.5rem 0 3rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+footer .fa { margin-bottom: 0.6rem; color: var(--body); text-align: left; }
+footer p + p { margin-top: 0.6rem; }
+footer .legal { max-width: 52rem; }
+
+/* status pages (success / cancel) */
+.status-page { min-height: 70vh; display: grid; place-items: center; text-align: center; padding: 3rem 1.25rem; }
+.status-page .fa { font-size: 1.4rem; margin-bottom: 0.8rem; }
+.status-page h1 { font-size: 2rem; margin-bottom: 1rem; }
+.status-page p { max-width: 36rem; margin: 0 auto 0.8rem; }
+.status-page .btn { margin-top: 1.4rem; }
