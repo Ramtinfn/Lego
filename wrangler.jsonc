@@ -1,0 +1,35 @@
+{
+  // Cloudflare Worker configuration — https://developers.cloudflare.com/workers/wrangler/configuration/
+  "name": "persepolis-gate-store",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-01-01",
+
+  // The static site lives in ./public and is served by the Worker.
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+
+  // Product settings. Amounts are in the currency's minor unit (cents):
+  // 80000 = A$800.00, 200000 = A$2,000.00. Change here and redeploy.
+  "vars": {
+    "PRODUCT_NAME": "Gate of All Nations — Persepolis Brick Set",
+    "CURRENCY": "aud",
+    "COMPAT_AMOUNT": "80000",   // Compatible bricks edition
+    "GENUINE_AMOUNT": "200000"  // Genuine LEGO® elements edition
+    // Optional no-code alternative to the Stripe API key — one Payment Link per edition:
+    // "PAYMENT_LINK_URL_COMPAT": "https://buy.stripe.com/XXXXXXXX",
+    // "PAYMENT_LINK_URL_GENUINE": "https://buy.stripe.com/YYYYYYYY"
+  }
+
+  // Secrets are NOT set in this file. After deploying once, run:
+  //   npx wrangler secret put STRIPE_SECRET_KEY
+  // and paste your Stripe secret key (sk_test_... first, sk_live_... to go live).
+
+  // To attach your own domain after you register it on Cloudflare,
+  // uncomment and edit:
+  // ,"routes": [
+  //   { "pattern": "yourdomain.com", "custom_domain": true },
+  //   { "pattern": "www.yourdomain.com", "custom_domain": true }
+  // ]
+}
