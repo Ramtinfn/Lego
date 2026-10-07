@@ -89,6 +89,12 @@ function handleProduct(env) {
 }
 
 async function handleCheckout(request, env, origin) {
+  // Sales are paused (LEGO Ideas licence window). Flip SALES_ENABLED to "true"
+  // in wrangler.jsonc and redeploy to re-open ordering.
+  if ((env.SALES_ENABLED || "").toLowerCase() !== "true") {
+    return json({ error: "Ordering is not available." }, 410);
+  }
+
   let quantity = 1;
   let variantId = "compat";
   try {

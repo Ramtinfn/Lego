@@ -13,6 +13,9 @@
   // Product settings. Amounts are in the currency's minor unit (cents):
   // 80000 = A$800.00, 200000 = A$2,000.00. Change here and redeploy.
   "vars": {
+    // Sales paused during the LEGO Ideas licence window (~140 days from Oct 2026).
+    // Set to "true" and redeploy to re-open ordering once the rights revert.
+    "SALES_ENABLED": "false",
     "PRODUCT_NAME": "Gate of All Nations — Persepolis Brick Set",
     "CURRENCY": "aud",
     "COMPAT_AMOUNT": "80000",   // Compatible bricks edition
