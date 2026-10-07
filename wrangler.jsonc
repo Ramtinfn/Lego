@@ -1,6 +1,6 @@
 {
   // Cloudflare Worker configuration — https://developers.cloudflare.com/workers/wrangler/configuration/
-  "name": "persepolis-gate-store",
+  "name": "persiainbricks-showcase",
   "main": "src/worker.js",
   "compatibility_date": "2026-01-01",
 

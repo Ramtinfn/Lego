@@ -1,5 +1,5 @@
 {
-  "name": "persepolis-gate-store",
+  "name": "persiainbricks-showcase",
   "version": "1.0.0",
   "private": true,
   "description": "Showcase site for the Gate of All Nations (Persepolis) brick design \u2014 Cloudflare Worker serving static pages.",
