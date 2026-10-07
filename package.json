@@ -2,11 +2,10 @@
   "name": "persepolis-gate-store",
   "version": "1.0.0",
   "private": true,
-  "description": "Storefront for the Gate of All Nations (Persepolis) building-brick set — Cloudflare Worker + static site + Stripe Checkout.",
+  "description": "Showcase site for the Gate of All Nations (Persepolis) brick design \u2014 Cloudflare Worker serving static pages.",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "stripe-key": "wrangler secret put STRIPE_SECRET_KEY"
+    "deploy": "wrangler deploy"
   },
   "devDependencies": {
     "wrangler": "^4.0.0"

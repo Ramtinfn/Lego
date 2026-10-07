@@ -10,28 +10,9 @@
     "binding": "ASSETS"
   },
 
-  // Product settings. Amounts are in the currency's minor unit (cents):
-  // 80000 = A$800.00, 200000 = A$2,000.00. Change here and redeploy.
-  "vars": {
-    // Sales paused during the LEGO Ideas licence window (~140 days from Oct 2026).
-    // Set to "true" and redeploy to re-open ordering once the rights revert.
-    "SALES_ENABLED": "false",
-    "PRODUCT_NAME": "Gate of All Nations — Persepolis Brick Set",
-    "CURRENCY": "aud",
-    "COMPAT_AMOUNT": "80000",   // Compatible bricks edition
-    "GENUINE_AMOUNT": "200000"  // Genuine LEGO® elements edition
-    // Optional no-code alternative to the Stripe API key — one Payment Link per edition:
-    // "PAYMENT_LINK_URL_COMPAT": "https://buy.stripe.com/XXXXXXXX",
-    // "PAYMENT_LINK_URL_GENUINE": "https://buy.stripe.com/YYYYYYYY"
-  },
-
-  // The store's own domain. Cloudflare provisions DNS and TLS automatically.
+  // The site's domain. Cloudflare provisions DNS and TLS automatically.
   "routes": [
     { "pattern": "persiainbricks.com", "custom_domain": true },
     { "pattern": "www.persiainbricks.com", "custom_domain": true }
   ]
-
-  // Secrets are NOT set in this file. After deploying once, set
-  // STRIPE_SECRET_KEY under the Worker's Settings → Variables and Secrets
-  // (or via: npx wrangler secret put STRIPE_SECRET_KEY).
 }
