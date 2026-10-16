@@ -76,7 +76,7 @@ Once the domain is registered on Cloudflare:
 ## Changing the price, currency or shipping countries
 
 - **Prices / currency / product name:** edit the `vars` block in `wrangler.jsonc` — `COMPAT_AMOUNT` (compatible bricks edition, `80000` = A$800.00) and `GENUINE_AMOUNT` (genuine LEGO® elements edition, `200000` = A$2,000.00) are in cents — then `npm run deploy`. The page reads prices from the Worker, so they update everywhere. If you use Payment Links instead of an API key, create one link per edition (`PAYMENT_LINK_URL_COMPAT`, `PAYMENT_LINK_URL_GENUINE`).
-- **Countries offered at checkout:** edit the `SHIPPING_COUNTRIES` list at the top of `src/worker.js`. Stripe cannot collect shipping addresses for a few sanctioned territories (Iran included), so the site's FAQ directs Iranian orders to email: delivered by post where available, otherwise hand-carried by an international traveller with their additional charges added, confirmed with the customer before payment.
+- **Countries offered at checkout:** edit the `SHIPPING_COUNTRIES` allowlist at the top of `src/worker.js`. Restricted jurisdictions (Iran, Cuba, North Korea, Syria, and the Crimea, Donetsk and Luhansk regions) are additionally geoblocked at the edge by the Worker and must never be added to the allowlist, offered delivery by any other channel, or served indirectly through intermediaries — this is a condition of the payment provider's terms.
 - **Contact email:** set to `ramtinf@gmail.com` in the footer and FAQ of `public/index.html` — change there if you ever switch to a dedicated orders address.
 
 ## Testing locally

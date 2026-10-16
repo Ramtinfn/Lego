@@ -5,9 +5,12 @@
   "compatibility_date": "2026-01-01",
 
   // The static site lives in ./public and is served by the Worker.
+  // run_worker_first ensures EVERY request (including static pages) passes
+  // through the Worker's restricted-jurisdiction geoblock before serving.
   "assets": {
     "directory": "./public",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    "run_worker_first": true
   },
 
   // Product settings. Amounts are in the currency's minor unit (cents):
