@@ -1,0 +1,32 @@
+{
+  // Shahyad — Azadi Tower brick models (persiainbricks.com.au).
+  // Deployed by Cloudflare Workers Builds with root directory /shahyad.
+  "name": "shahyad-store",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-01-01",
+
+  // run_worker_first ensures EVERY request (including static pages) passes
+  // through the Worker's restricted-jurisdiction geoblock before serving.
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+
+  "vars": {
+    // LAUNCH CHECKLIST (in order):
+    //  1. Confirm the Stripe account is reinstated and in good standing.
+    //  2. Per the attestation given to Stripe (Oct 2026): notify Stripe that
+    //     persiainbricks.com.au is going live so they can validate the
+    //     geoblocking/checkout controls, and add the domain to the Stripe
+    //     account's business website settings.
+    //  3. Set the STRIPE_SECRET_KEY secret on this Worker.
+    //  4. Set SALES_ENABLED to "true" and redeploy.
+    "SALES_ENABLED": "false"
+  },
+
+  "routes": [
+    { "pattern": "persiainbricks.com.au", "custom_domain": true },
+    { "pattern": "www.persiainbricks.com.au", "custom_domain": true }
+  ]
+}
