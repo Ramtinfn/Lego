@@ -100,37 +100,37 @@ const COUNTRY_NAMES = {
   BR:"Brazil", MX:"Mexico", AR:"Argentina", CL:"Chile", CO:"Colombia", PE:"Peru"
 };
 
-// Prices in AUD cents: parts cost + 15%.
-// Tower: compatible 45000*1.15=51750→51800; LEGO 79000*1.15=90850→90900.
-// Square: compatible 72000*1.15=82800; LEGO 140000*1.15=161000.
+// Prices in AUD cents: parts cost / 0.85 (15% margin), rounded to whole dollars.
+// Tower: 45000/0.85≈52900; 79000/0.85≈92900.
+// Square: 72000/0.85≈84700; 140000/0.85≈164700.
 const PRODUCTS = {
   tower: {
     name: "Shahyad Tower — Compact Model",
     pieces: 2660,
     size: "25.6 × 44.8 × 30.4 cm (32 × 56 studs)",
     editions: {
-      compat:  { name: "Compatible bricks edition", unitAmount: 51800 },
-      genuine: { name: "Genuine LEGO® elements edition", unitAmount: 90900 }
+      compat:  { name: "Compatible bricks edition", unitAmount: 52900 },
+      genuine: { name: "Genuine LEGO® elements edition", unitAmount: 92900 }
     },
     shipping: { AU: 2900, NZ: 8900, ASIA: 12900, WORLD: 17900 },
     description:
       "2,660-piece brick model of the Shahyad (Azadi) Tower on its display footing. " +
-      "Digital building files included. Delivery within 28 calendar days in Australia; " +
+      "Step-by-step building instructions included. Delivery within 28 calendar days in Australia; " +
       "international orders take longer (transfer and customs)."
   },
   square: {
     name: "Shahyad Square — Full Landscaped Model",
-    pieces: 3254,
+    pieces: 3262,
     size: "76.8 × 64.0 × 30.4 cm (96 × 80 studs)",
     editions: {
-      compat:  { name: "Compatible bricks edition", unitAmount: 82800 },
-      genuine: { name: "Genuine LEGO® elements edition", unitAmount: 161000 }
+      compat:  { name: "Compatible bricks edition", unitAmount: 84700 },
+      genuine: { name: "Genuine LEGO® elements edition", unitAmount: 164700 }
     },
     shipping: { AU: 3500, NZ: 9900, ASIA: 14500, WORLD: 19900 },
     description:
-      "3,254-piece brick model of the Shahyad (Azadi) Tower on its full square with " +
+      "3,262-piece brick model of the Shahyad (Azadi) Tower on its full square with " +
       "lamp posts. This edition ships without the decorative trees shown in renders. " +
-      "Digital building files included. Delivery within 28 calendar days in Australia; " +
+      "Step-by-step building instructions included. Delivery within 28 calendar days in Australia; " +
       "international orders take longer (transfer and customs)."
   }
 };
