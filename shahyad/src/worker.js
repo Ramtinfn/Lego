@@ -151,6 +151,7 @@ export default {
 
     if (url.pathname === "/api/catalogue") {
       return json({
+        salesEnabled: (env.SALES_ENABLED || "").toLowerCase() === "true",
         currency: "aud",
         products: PRODUCTS,
         zones: ZONES,

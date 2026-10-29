@@ -61,6 +61,16 @@
     [edition, country, qty].forEach(function (el) { el.addEventListener("change", refresh); });
     refresh();
 
+    if (!data.salesEnabled) {
+      btn.disabled = true;
+      btn.textContent = "Opening soon";
+      var note = document.createElement("p");
+      note.className = "order-note";
+      note.innerHTML = 'Ordering has not opened yet. <a href="#notify">Get notified</a> the moment it does.';
+      btn.insertAdjacentElement("afterend", note);
+      return;
+    }
+
     btn.addEventListener("click", function () {
       err.classList.remove("show");
       btn.disabled = true;

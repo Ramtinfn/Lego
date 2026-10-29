@@ -20,8 +20,11 @@
     //     persiainbricks.com.au is going live so they can validate the
     //     geoblocking/checkout controls, and add the domain to the Stripe
     //     account's business website settings.
-    //  3. Set the STRIPE_SECRET_KEY secret on this Worker.
-    //  4. Set SALES_ENABLED to "true" and redeploy.
+    //  3. Verify the step-by-step instruction files exist and cover BOTH
+    //     models (tower and full square) exactly as sold.
+    //  4. Set the STRIPE_SECRET_KEY secret on this Worker.
+    //  5. Set SALES_ENABLED to "true", redeploy, and place one live test
+    //     order end-to-end before announcing.
     "SALES_ENABLED": "false"
   },
 
