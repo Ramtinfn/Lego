@@ -115,7 +115,7 @@ const PRODUCTS = {
     shipping: { AU: 2900, NZ: 8900, ASIA: 12900, WORLD: 17900 },
     description:
       "2,660-piece brick model of the Shahyad (Azadi) Tower on its display footing. " +
-      "Step-by-step building instructions included. Delivery within 28 calendar days in Australia; " +
+      "Step-by-step building instructions included. Delivery within 35 calendar days in Australia; " +
       "international orders take longer (transfer and customs)."
   },
   square: {
@@ -130,7 +130,7 @@ const PRODUCTS = {
     description:
       "3,262-piece brick model of the Shahyad (Azadi) Tower on its full square with " +
       "lamp posts. This edition ships without the decorative trees shown in renders. " +
-      "Step-by-step building instructions included. Delivery within 28 calendar days in Australia; " +
+      "Step-by-step building instructions included. Delivery within 35 calendar days in Australia; " +
       "international orders take longer (transfer and customs)."
   }
 };
@@ -216,7 +216,7 @@ async function handleCheckout(request, env, origin) {
   params.append("metadata[model]", body.model);
   params.append("metadata[edition]", body.edition);
   params.append("metadata[destination]", country);
-  params.append("metadata[delivery_terms]", "AU: 28 calendar days; international: longer (transfer/customs)");
+  params.append("metadata[delivery_terms]", "AU: 35 calendar days; international: longer (transfer/customs)");
 
   const resp = await fetch("https://api.stripe.com/v1/checkout/sessions", {
     method: "POST",
