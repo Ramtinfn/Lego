@@ -25,8 +25,11 @@
     "SALES_ENABLED": "false"
   },
 
-  "routes": [
-    { "pattern": "persiainbricks.com.au", "custom_domain": true },
-    { "pattern": "www.persiainbricks.com.au", "custom_domain": true }
-  ]
+  // Uncomment AFTER persiainbricks.com.au is registered and added to this
+  // Cloudflare account (otherwise the first deploy fails). Until then the
+  // Worker is reachable at its *.workers.dev URL.
+  // ,"routes": [
+  //   { "pattern": "persiainbricks.com.au", "custom_domain": true },
+  //   { "pattern": "www.persiainbricks.com.au", "custom_domain": true }
+  // ]
 }
