@@ -61,8 +61,10 @@ this jurisdiction.</p>
 /* Catalogue                                                           */
 /* ------------------------------------------------------------------ */
 
-// Shipping zones. Rates in AUD cents PER SET, derived from Australia Post
-// up-to-5kg parcel bands (Oct 2026) plus packaging and transit cover.
+// Shipping & handling zones. Rates in AUD cents PER SET: Australia Post
+// up-to-5kg parcel bands (Oct 2026) plus packaging, transit cover and
+// payment-processing costs (card surcharging is banned in AU from 1 Oct 2026,
+// so processing cost is part of handling).
 const ZONES = {
   AU:    { label: "Australia" },
   NZ:    { label: "New Zealand" },
@@ -112,7 +114,7 @@ const PRODUCTS = {
       compat:  { name: "Compatible bricks edition", unitAmount: 52900 },
       genuine: { name: "Genuine LEGO® elements edition", unitAmount: 92900 }
     },
-    shipping: { AU: 2900, NZ: 8900, ASIA: 12900, WORLD: 17900 },
+    shipping: { AU: 3900, NZ: 11500, ASIA: 15500, WORLD: 20500 },
     description:
       "2,660-piece brick model of the Shahyad (Azadi) Tower on its display footing. " +
       "Step-by-step building instructions included. Delivery within 35 calendar days in Australia; " +
@@ -126,7 +128,7 @@ const PRODUCTS = {
       compat:  { name: "Compatible bricks edition", unitAmount: 84700 },
       genuine: { name: "Genuine LEGO® elements edition", unitAmount: 164700 }
     },
-    shipping: { AU: 3500, NZ: 9900, ASIA: 14500, WORLD: 19900 },
+    shipping: { AU: 5500, NZ: 13500, ASIA: 18500, WORLD: 23900 },
     description:
       "3,262-piece brick model of the Shahyad (Azadi) Tower on its full square with " +
       "lamp posts. This edition ships without the decorative trees shown in renders. " +
@@ -210,7 +212,7 @@ async function handleCheckout(request, env, origin) {
   // priced for that zone. Never a restricted jurisdiction.
   params.append("shipping_address_collection[allowed_countries][]", country);
   params.append("shipping_options[0][shipping_rate_data][display_name]",
-    `Tracked shipping to ${COUNTRY_NAMES[country]}`);
+    `Tracked shipping & handling to ${COUNTRY_NAMES[country]}`);
   params.append("shipping_options[0][shipping_rate_data][type]", "fixed_amount");
   params.append("shipping_options[0][shipping_rate_data][fixed_amount][amount]", String(shippingAmount));
   params.append("shipping_options[0][shipping_rate_data][fixed_amount][currency]", "aud");
