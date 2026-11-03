@@ -25,7 +25,7 @@
     //  4. Set the STRIPE_SECRET_KEY secret on this Worker.
     //  5. Set SALES_ENABLED to "true", redeploy, and place one live test
     //     order end-to-end before announcing.
-    "SALES_ENABLED": "false"
+    "SALES_ENABLED": "true"
   },
 
   // The store's domain. Cloudflare provisions DNS and TLS automatically.

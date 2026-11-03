@@ -102,22 +102,23 @@ const COUNTRY_NAMES = {
   BR:"Brazil", MX:"Mexico", AR:"Argentina", CL:"Chile", CO:"Colombia", PE:"Peru"
 };
 
-// Prices in AUD cents: parts cost / 0.85 (15% margin), rounded to whole dollars.
-// Tower: 45000/0.85≈52900; 79000/0.85≈92900.
-// Square: 72000/0.85≈84700; 140000/0.85≈164700.
+// Prices in AUD cents: (parts cost + A$20 printed manual) / 0.85 (15% margin),
+// rounded to whole dollars.
+// Tower: 47000/0.85≈55300; 81000/0.85≈95300.
+// Square: 74000/0.85≈87100; 142000/0.85≈167100.
 const PRODUCTS = {
   tower: {
     name: "Shahyad Tower — Compact Model",
     pieces: 2660,
     size: "25.6 × 44.8 × 30.4 cm (32 × 56 studs)",
     editions: {
-      compat:  { name: "Compatible bricks edition", unitAmount: 52900 },
-      genuine: { name: "Genuine LEGO® elements edition", unitAmount: 92900 }
+      compat:  { name: "Compatible bricks edition", unitAmount: 55300 },
+      genuine: { name: "Genuine LEGO® elements edition", unitAmount: 95300 }
     },
     shipping: { AU: 3900, NZ: 11500, ASIA: 15500, WORLD: 20500 },
     description:
       "2,660-piece brick model of the Shahyad (Azadi) Tower on its display footing. " +
-      "Step-by-step building instructions included. Delivery within 35 calendar days in Australia; " +
+      "Printed step-by-step instruction book included. Delivery within 35 calendar days in Australia; " +
       "international orders take longer (transfer and customs)."
   },
   square: {
@@ -125,14 +126,14 @@ const PRODUCTS = {
     pieces: 3262,
     size: "76.8 × 64.0 × 30.4 cm (96 × 80 studs)",
     editions: {
-      compat:  { name: "Compatible bricks edition", unitAmount: 84700 },
-      genuine: { name: "Genuine LEGO® elements edition", unitAmount: 164700 }
+      compat:  { name: "Compatible bricks edition", unitAmount: 87100 },
+      genuine: { name: "Genuine LEGO® elements edition", unitAmount: 167100 }
     },
     shipping: { AU: 5500, NZ: 13500, ASIA: 18500, WORLD: 23900 },
     description:
       "3,262-piece brick model of the Shahyad (Azadi) Tower on its full square with " +
       "lamp posts. This edition ships without the decorative trees shown in renders. " +
-      "Step-by-step building instructions included. Delivery within 35 calendar days in Australia; " +
+      "Printed step-by-step instruction book included. Delivery within 35 calendar days in Australia; " +
       "international orders take longer (transfer and customs)."
   }
 };
