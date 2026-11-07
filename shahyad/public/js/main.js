@@ -66,7 +66,7 @@
       btn.textContent = "Opening soon";
       var note = document.createElement("p");
       note.className = "order-note";
-      note.innerHTML = 'Ordering has not opened yet. <a href="#notify">Get notified</a> the moment it does.';
+      note.innerHTML = "Ordering is temporarily unavailable. <a href='mailto:ramtinf@gmail.com'>Email us</a> and we will let you know when it reopens.";
       btn.insertAdjacentElement("afterend", note);
       return;
     }
@@ -88,13 +88,13 @@
         .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
         .then(function (res) {
           if (res.ok && res.data && res.data.url) { window.location.href = res.data.url; return; }
-          err.textContent = (res.data && res.data.error) || "Checkout is not available right now. Please try again shortly.";
+          err.innerHTML = ((res.data && res.data.error) || "Checkout is not available right now. Please try again shortly.") + " If this keeps happening, <a href='mailto:ramtinf@gmail.com?subject=Checkout%20problem%20persiainbricks.com.au'>email us</a> and we will sort it out.";
           err.classList.add("show");
           btn.disabled = false;
           btn.textContent = "Pay securely";
         })
         .catch(function () {
-          err.textContent = "We couldn't reach the payment service. Check your connection and try again.";
+          err.innerHTML = "We could not reach the payment service. Check your connection and try again, or <a href='mailto:ramtinf@gmail.com?subject=Checkout%20problem%20persiainbricks.com.au'>email us</a>.";
           err.classList.add("show");
           btn.disabled = false;
           btn.textContent = "Pay securely";
