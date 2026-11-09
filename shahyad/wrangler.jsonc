@@ -30,7 +30,7 @@
     // platform's tracking stays off. GA4: analytics.google.com -> Admin ->
     // Data streams -> Web -> Measurement ID (G-XXXXXXX). Meta Pixel:
     // Meta Events Manager -> Data sources -> Pixel ID (digits).
-    "GA4_MEASUREMENT_ID": "",
+    "GA4_MEASUREMENT_ID": "G-D1087LY5JR",
     "META_PIXEL_ID": ""
   },
 
