@@ -31,7 +31,7 @@
     // Data streams -> Web -> Measurement ID (G-XXXXXXX). Meta Pixel:
     // Meta Events Manager -> Data sources -> Pixel ID (digits).
     "GA4_MEASUREMENT_ID": "G-D1087LY5JR",
-    "META_PIXEL_ID": ""
+    "META_PIXEL_ID": "1490269132965672"
   },
 
   // The store's domain. Cloudflare provisions DNS and TLS automatically.
