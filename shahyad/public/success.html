@@ -17,8 +17,71 @@
       <h1>Thank you. The tower is on its way.</h1>
       <p>Your order is confirmed and Stripe has emailed your receipt. Within Australia, delivery is within 35 calendar days; international deliveries take longer, depending on transfer and customs.</p>
       <p>Soon, a piece of Tehran's skyline will stand on your shelf.</p>
+      <p class="order-note" id="order-ref" hidden></p>
       <a class="btn quiet" href="/">Back to the site</a>
     </div>
   </main>
+  <script>
+  /* Verified purchase tracking: the purchase event fires only after
+     /api/order-status confirms with Stripe, server-side, that this
+     session is paid. localStorage guards against refresh duplicates. */
+  (function () {
+    "use strict";
+    var id = new URLSearchParams(window.location.search).get("session_id") || "";
+    if (!/^cs_(live|test)_[A-Za-z0-9]+$/.test(id)) return;
+    Promise.all([
+      fetch("/api/order-status?session_id=" + encodeURIComponent(id)).then(function (r) { return r.json(); }),
+      fetch("/api/catalogue").then(function (r) { return r.json(); })
+    ]).then(function (res) {
+      var order = res[0], cat = res[1];
+      if (!order || !order.paid) return;
+      var ref = document.getElementById("order-ref");
+      if (ref && order.orderRef) {
+        ref.textContent = "Order reference: " + order.orderRef +
+          " — keep this for any questions about your order.";
+        ref.hidden = false;
+      }
+      var guard = "pib_purchase_" + id.slice(-16);
+      try { if (localStorage.getItem(guard)) return; } catch (e) {}
+      var a = (cat && cat.analytics) || {};
+      var value = (order.amountTotal || 0) / 100;
+      var currency = (order.currency || "aud").toUpperCase();
+      var itemName = (order.model || "set") + (order.edition ? " / " + order.edition : "");
+      var fired = false;
+      if (a.ga4) {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        var g = document.createElement("script");
+        g.async = true;
+        g.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(a.ga4);
+        document.head.appendChild(g);
+        window.gtag("js", new Date());
+        window.gtag("config", a.ga4);
+        window.gtag("event", "purchase", {
+          transaction_id: id,
+          value: value,
+          currency: currency,
+          items: [{ item_id: itemName, item_name: itemName, price: value, quantity: 1 }]
+        });
+        fired = true;
+      }
+      if (a.metaPixel) {
+        (function (f, b, e, v, n, t, s2) {
+          if (f.fbq) return; n = f.fbq = function () {
+            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+          };
+          if (!f._fbq) f._fbq = n; n.push = n; n.loaded = true; n.version = "2.0";
+          n.queue = []; t = b.createElement(e); t.async = true; t.src = v;
+          s2 = b.getElementsByTagName(e)[0]; s2.parentNode.insertBefore(t, s2);
+        })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+        window.fbq("init", a.metaPixel);
+        window.fbq("track", "PageView");
+        window.fbq("track", "Purchase", { value: value, currency: currency, content_name: itemName });
+        fired = true;
+      }
+      if (fired) { try { localStorage.setItem(guard, "1"); } catch (e) {} }
+    }).catch(function () {});
+  })();
+  </script>
 </body>
 </html>

@@ -155,6 +155,10 @@ export default {
     if (url.pathname === "/api/catalogue") {
       return json({
         salesEnabled: (env.SALES_ENABLED || "").toLowerCase() === "true",
+        analytics: {
+          ga4: env.GA4_MEASUREMENT_ID || null,
+          metaPixel: env.META_PIXEL_ID || null
+        },
         currency: "aud",
         products: PRODUCTS,
         zones: ZONES,
@@ -166,6 +170,10 @@ export default {
     if (url.pathname === "/api/checkout") {
       if (request.method !== "POST") return json({ error: "Use POST." }, 405);
       return handleCheckout(request, env, url.origin);
+    }
+
+    if (url.pathname === "/api/order-status") {
+      return handleOrderStatus(url, env);
     }
 
     return env.ASSETS.fetch(request);
@@ -217,6 +225,16 @@ async function handleCheckout(request, env, origin) {
   params.append("shipping_options[0][shipping_rate_data][type]", "fixed_amount");
   params.append("shipping_options[0][shipping_rate_data][fixed_amount][amount]", String(shippingAmount));
   params.append("shipping_options[0][shipping_rate_data][fixed_amount][currency]", "aud");
+  // Marketing attribution (non-identifying): captured on the landing page
+  // and stored on the Stripe session so every payment shows its source.
+  const attr = body.attribution || {};
+  const clean = (v) => String(v == null ? "" : v).replace(/[^\w .\/:%()&=?#-]/g, "").slice(0, 120);
+  if (clean(attr.source))   params.append("metadata[utm_source]", clean(attr.source));
+  if (clean(attr.medium))   params.append("metadata[utm_medium]", clean(attr.medium));
+  if (clean(attr.campaign)) params.append("metadata[utm_campaign]", clean(attr.campaign));
+  if (clean(attr.referrer)) params.append("metadata[referrer]", clean(attr.referrer));
+  if (clean(attr.landing))  params.append("metadata[landing_page]", clean(attr.landing));
+
   params.append("metadata[model]", body.model);
   params.append("metadata[edition]", body.edition);
   params.append("metadata[destination]", country);
@@ -237,4 +255,34 @@ async function handleCheckout(request, env, origin) {
     return json({ error: message }, 502);
   }
   return json({ url: session.url });
+}
+
+/**
+ * GET /api/order-status?session_id=cs_... — server-side payment verification
+ * for the success page. Returns only non-identifying order facts, so the
+ * client can record a `purchase` analytics event strictly after Stripe
+ * confirms payment. No PII leaves Stripe.
+ */
+async function handleOrderStatus(url, env) {
+  const id = url.searchParams.get("session_id") || "";
+  if (!/^cs_(live|test)_[A-Za-z0-9]+$/.test(id) || !env.STRIPE_SECRET_KEY) {
+    return json({ paid: false }, 200);
+  }
+  try {
+    const resp = await fetch(`https://api.stripe.com/v1/checkout/sessions/${id}`, {
+      headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}` }
+    });
+    if (!resp.ok) return json({ paid: false }, 200);
+    const s = await resp.json();
+    return new Response(JSON.stringify({
+      paid: s.payment_status === "paid",
+      orderRef: id.slice(-10).toUpperCase(),
+      amountTotal: s.amount_total,
+      currency: s.currency,
+      model: (s.metadata && s.metadata.model) || null,
+      edition: (s.metadata && s.metadata.edition) || null
+    }), { status: 200, headers: { ...JSON_HEADERS, "Cache-Control": "no-store" } });
+  } catch {
+    return json({ paid: false }, 200);
+  }
 }
