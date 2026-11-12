@@ -106,32 +106,33 @@ const COUNTRY_NAMES = {
 // rounded to whole dollars.
 // Tower: 47000/0.85≈55300; 81000/0.85≈95300.
 // Square: 74000/0.85≈87100; 142000/0.85≈167100.
+// Nov 2026: +A$20 per edition for the corrected VC1 models (net +13 pieces each).
 const PRODUCTS = {
   tower: {
     name: "Shahyad Tower — Compact Model",
-    pieces: 2660,
+    pieces: 2673,
     size: "25.6 × 44.8 × 30.4 cm (32 × 56 studs)",
     editions: {
-      compat:  { name: "Compatible bricks edition", unitAmount: 55300 },
-      genuine: { name: "Genuine LEGO® elements edition", unitAmount: 95300 }
+      compat:  { name: "Compatible bricks edition", unitAmount: 57300 },
+      genuine: { name: "Genuine LEGO® elements edition", unitAmount: 97300 }
     },
     shipping: { AU: 3900, NZ: 11500, ASIA: 15500, WORLD: 20500 },
     description:
-      "2,660-piece brick model of the Shahyad (Azadi) Tower on its display footing. " +
+      "2,673-piece brick model of the Shahyad (Azadi) Tower on its display footing. " +
       "Printed step-by-step instruction book included. Delivery within 35 calendar days in Australia; " +
       "international orders take longer (transfer and customs)."
   },
   square: {
     name: "Shahyad Square — Full Landscaped Model",
-    pieces: 3262,
+    pieces: 3279,
     size: "76.8 × 64.0 × 30.4 cm (96 × 80 studs)",
     editions: {
-      compat:  { name: "Compatible bricks edition", unitAmount: 87100 },
-      genuine: { name: "Genuine LEGO® elements edition", unitAmount: 167100 }
+      compat:  { name: "Compatible bricks edition", unitAmount: 89100 },
+      genuine: { name: "Genuine LEGO® elements edition", unitAmount: 169100 }
     },
     shipping: { AU: 5500, NZ: 13500, ASIA: 18500, WORLD: 23900 },
     description:
-      "3,262-piece brick model of the Shahyad (Azadi) Tower on its full square with " +
+      "3,279-piece brick model of the Shahyad (Azadi) Tower on its full square with " +
       "lamp posts. This edition ships without the decorative trees shown in renders. " +
       "Printed step-by-step instruction book included. Delivery within 35 calendar days in Australia; " +
       "international orders take longer (transfer and customs)."
