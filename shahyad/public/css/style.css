@@ -196,3 +196,21 @@ footer .legal { max-width: 52rem; }
 .status-page h1 { font-size: 2rem; margin-bottom: 1rem; }
 .status-page p { max-width: 36rem; margin: 0 auto 0.8rem; }
 .status-page .btn { margin-top: 1.4rem; }
+
+/* model cards (home gallery) */
+.model-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
+@media (max-width: 820px) { .model-cards { grid-template-columns: 1fr; } }
+.model-card {
+  display: block; border: 1px solid var(--line); border-radius: 2px;
+  background: var(--night-raised); overflow: hidden;
+  text-decoration: none; color: var(--body);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.model-card:hover, .model-card:focus-visible { border-color: var(--turquoise-bright); transform: translateY(-3px); text-decoration: none; }
+.model-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; border-bottom: 1px solid var(--line); }
+.mc-body { display: block; padding: 1rem 1.15rem 1.2rem; }
+.mc-kicker { display: block; font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.mc-name { display: block; font-family: "Marcellus", serif; font-size: 1.18rem; color: var(--marble); margin: 0.3rem 0 0.25rem; }
+.mc-meta { display: block; font-size: 0.88rem; color: var(--muted); }
+.mc-cta { display: block; margin-top: 0.65rem; font-size: 0.9rem; color: var(--turquoise-bright); }
+.models-more { margin-top: 1.4rem; font-size: 0.95rem; color: var(--muted); }

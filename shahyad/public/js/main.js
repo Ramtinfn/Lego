@@ -245,6 +245,12 @@
         setupPanel(panel, data);
       });
       watchViewItem(data);
+      document.querySelectorAll("[data-model-link]").forEach(function (el) {
+        el.addEventListener("click", function () {
+          var m = el.getAttribute("data-model-link");
+          if (data.products[m]) track("select_item", { items: [itemFor(data, m, "compat")] });
+        });
+      });
     })
     .catch(function () {
       document.querySelectorAll('.order-panel [data-role="error"]').forEach(function (el) {
