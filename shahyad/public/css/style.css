@@ -214,3 +214,14 @@ footer .legal { max-width: 52rem; }
 .mc-meta { display: block; font-size: 0.88rem; color: var(--muted); }
 .mc-cta { display: block; margin-top: 0.65rem; font-size: 0.9rem; color: var(--turquoise-bright); }
 .models-more { margin-top: 1.4rem; font-size: 0.95rem; color: var(--muted); }
+
+/* hero collage — one tile per model */
+.hero-collage { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+.hero-collage a { display: block; }
+.hero-collage a.big { grid-column: 1 / -1; }
+.hero-collage img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+  border: 1px solid var(--line); border-radius: 2px;
+  transition: border-color 0.2s ease;
+}
+.hero-collage a:hover img, .hero-collage a:focus-visible img { border-color: var(--turquoise-bright); }
