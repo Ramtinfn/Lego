@@ -135,7 +135,21 @@ const PRODUCTS = {
       "3,279-piece brick model of the Shahyad (Azadi) Tower on its full square with " +
       "lamp posts. This edition ships without the decorative trees shown in renders. " +
       "Printed step-by-step instruction book included. Delivery within 35 calendar days in Australia; " +
-      "international orders take longer (transfer and customs)."
+      "international orders take longer (transfer and customs).",
+  arash: {
+    name: "Arash the Archer — Display Sculpture",
+    pieces: 2917,
+    size: "40 × 16 × 53 cm to the bow tip; base 37 × 16 cm",
+    editions: {
+      compat: { name: "Compatible bricks edition", unitAmount: 42900 }
+    },
+    shipping: { AU: 3900, NZ: 11500, ASIA: 15500, WORLD: 20500 },
+    description:
+      "2,917-piece brick sculpture of Arash the Archer at full draw, inspired by the " +
+      "statue at Sa'dabad, Tehran. Digital 185-page building instructions (printable) and " +
+      "two printed bilingual plaque labels included. Delivery within 35 calendar days in " +
+      "Australia; international orders take longer (transfer and customs)."
+  }
   }
 };
 
@@ -216,7 +230,7 @@ async function handleCheckout(request, env, origin) {
   params.append("line_items[0][price_data][product_data][name]", `${product.name} — ${edition.name}`);
   params.append("line_items[0][price_data][product_data][description]", product.description);
   params.append("line_items[0][price_data][product_data][images][0]",
-    `${origin}/img/${body.model === "square" ? "square-main" : "tower-main"}.jpg`);
+    `${origin}/img/${body.model}-main.jpg`);
   params.append("phone_number_collection[enabled]", "true");
   // Address collection restricted to the destination the customer chose,
   // priced for that zone. Never a restricted jurisdiction.

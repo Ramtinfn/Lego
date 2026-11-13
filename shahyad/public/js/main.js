@@ -216,8 +216,8 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        var model = entry.target.id === "tower" ? "tower" : "square";
-        if (seen[model]) return;
+        var model = entry.target.id;
+        if (!data.products[model] || seen[model]) return;
         seen[model] = true;
         io.unobserve(entry.target);
         var p = data.products[model];
@@ -228,7 +228,7 @@
         });
       });
     }, { threshold: 0.3 });
-    ["tower", "square"].forEach(function (id) {
+    Object.keys(data.products).forEach(function (id) {
       var el = document.getElementById(id);
       if (el) io.observe(el);
     });
