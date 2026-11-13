@@ -135,7 +135,8 @@ const PRODUCTS = {
       "3,279-piece brick model of the Shahyad (Azadi) Tower on its full square with " +
       "lamp posts. This edition ships without the decorative trees shown in renders. " +
       "Printed step-by-step instruction book included. Delivery within 35 calendar days in Australia; " +
-      "international orders take longer (transfer and customs).",
+      "international orders take longer (transfer and customs)."
+  },
   arash: {
     name: "Arash the Archer — Display Sculpture",
     pieces: 2917,
@@ -149,7 +150,6 @@ const PRODUCTS = {
       "statue at Sa'dabad, Tehran. Digital 185-page building instructions (printable) and " +
       "two printed bilingual plaque labels included. Delivery within 35 calendar days in " +
       "Australia; international orders take longer (transfer and customs)."
-  }
   }
 };
 
