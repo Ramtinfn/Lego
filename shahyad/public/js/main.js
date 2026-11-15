@@ -36,7 +36,7 @@
   captureAttribution();
 
   /* ---------------- analytics loaders and dispatcher ------------------- */
-  var FB_MAP = { begin_checkout: "InitiateCheckout", purchase: "Purchase" };
+  var FB_MAP = { view_item: "ViewContent", begin_checkout: "InitiateCheckout", purchase: "Purchase" };
 
   function loadGa4(id) {
     var s = document.createElement("script");
