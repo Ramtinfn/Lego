@@ -29,3 +29,28 @@ Builds). Manual deploy: `npm install && npx wrangler deploy`.
   `store-version` branch.
 - LEGO® is a trademark of the LEGO Group, which does not sponsor, authorise or
   endorse this site.
+
+## SEO checklist — every model, both domains
+
+Standing rule: whatever is done for one model or one domain is done for all
+models and both domains where relevant (persiainbricks.com.au = store,
+persiainbricks.com = non-commercial LEGO® Ideas showcase until the Ideas
+window ends).
+
+When adding a model to the store (shahyad/):
+1. PRODUCTS entry in src/worker.js (name, pieces, size, editions, shipping, description).
+2. Page section with keyword-rich H2 carrying the model's name, bilingual subtitle,
+   gallery with descriptive alt text on every image, specs list, order panel.
+3. Clickable card in the #models gallery AND a tile/link in the hero collage.
+4. JSON-LD Product in the <head> @graph (name, image, description with
+   "Independent fan design" line, brand Persia in Bricks, Offer/AggregateOffer in AUD).
+5. Update meta description / og tags / hero copy if the model count or price floor changes.
+6. FAQ + policies: state the instruction-book format and any edition limits.
+7. Bump sitemap.xml lastmod; push; then Google Search Console (account
+   ramtinf@gmail.com) → URL inspection → Request indexing for the homepage.
+8. Analytics: nothing to do — view_item (ViewContent), select_item, begin_checkout
+   and purchase are generic over PRODUCTS keys.
+
+Showcase (.com): keep strictly non-commercial — no Product/Offer schema, no
+prices, no links to the store. CreativeWork + FAQPage schema only. The store
+may link to the showcase; never the reverse while the Ideas entry is live.
