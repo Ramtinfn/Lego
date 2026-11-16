@@ -171,7 +171,7 @@ const PRODUCTS = {
     pieces: 632,
     size: "22.4 \u00d7 22.4 \u00d7 17.4 cm (28 \u00d7 28 studs)",
     editions: {
-      compat: { name: "Compatible bricks edition", unitAmount: 10900 }
+      compat: { name: "Compatible bricks edition", unitAmount: 13900 }
     },
     shipping: { AU: 3900, NZ: 11500, ASIA: 15500, WORLD: 20500 },
     description:
