@@ -100,13 +100,14 @@
   }
 
   function populateCountries(select, data) {
-    var groups = { AU: [], NZ: [], ASIA: [], WORLD: [] };
+    var groups = { AU: [], NZ: [], ASIA: [], EUNA: [], WORLD: [] };
     Object.keys(data.countryZone).forEach(function (code) {
       groups[data.countryZone[code]].push(code);
     });
-    var labels = { AU: "Australia", NZ: "New Zealand", ASIA: "Asia", WORLD: "Rest of the world" };
+    var labels = { AU: "Australia", NZ: "New Zealand", ASIA: "Asia",
+      EUNA: "Europe & North America", WORLD: "Rest of the world" };
     select.innerHTML = "";
-    ["AU", "NZ", "ASIA", "WORLD"].forEach(function (zone) {
+    ["AU", "NZ", "ASIA", "EUNA", "WORLD"].forEach(function (zone) {
       var og = document.createElement("optgroup");
       og.label = labels[zone];
       groups[zone]

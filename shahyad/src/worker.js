@@ -77,11 +77,11 @@ const COUNTRY_ZONE = {
   NZ: "NZ",
   JP: "ASIA", KR: "ASIA", SG: "ASIA", MY: "ASIA", TH: "ASIA", VN: "ASIA",
   PH: "ASIA", ID: "ASIA", IN: "ASIA", HK: "ASIA", TW: "ASIA",
-  US: "WORLD", CA: "WORLD", GB: "WORLD", IE: "WORLD",
-  DE: "WORLD", FR: "WORLD", NL: "WORLD", BE: "WORLD", LU: "WORLD",
-  SE: "WORLD", NO: "WORLD", DK: "WORLD", FI: "WORLD",
-  IT: "WORLD", ES: "WORLD", PT: "WORLD", AT: "WORLD", CH: "WORLD",
-  PL: "WORLD", CZ: "WORLD", GR: "WORLD", RO: "WORLD", HU: "WORLD",
+  US: "EUNA", CA: "EUNA", GB: "EUNA", IE: "EUNA",
+  DE: "EUNA", FR: "EUNA", NL: "EUNA", BE: "EUNA", LU: "EUNA",
+  SE: "EUNA", NO: "EUNA", DK: "EUNA", FI: "EUNA",
+  IT: "EUNA", ES: "EUNA", PT: "EUNA", AT: "EUNA", CH: "EUNA",
+  PL: "EUNA", CZ: "EUNA", GR: "EUNA", RO: "EUNA", HU: "EUNA",
   TR: "WORLD", AE: "WORLD", SA: "WORLD", QA: "WORLD", KW: "WORLD",
   BH: "WORLD", OM: "WORLD", JO: "WORLD", IL: "WORLD",
   ZA: "WORLD", EG: "WORLD", MA: "WORLD", KE: "WORLD", NG: "WORLD",
@@ -107,6 +107,12 @@ const COUNTRY_NAMES = {
 // Tower: 47000/0.85≈55300; 81000/0.85≈95300.
 // Square: 74000/0.85≈87100; 142000/0.85≈167100.
 // Nov 2026: +A$20 per edition for the corrected VC1 models (net +13 pieces each).
+// Shipping & handling per zone, AUD cents: Australia Post International Standard
+// (tracked) retail rates effective 1 Sep 2026 (post guide MS11) for each model's
+// estimated packed weight, plus packaging and card-fee allowance, rounded up.
+// Packed-weight estimates (parts + box + book where printed): hafezieh ~1.5 kg,
+// khaju ~2.5 kg, arash ~4 kg, tower ~5.5 kg, square ~6 kg. Zones: EUNA = Europe,
+// UK, US & Canada (AusPost zones 3-4); WORLD = remaining countries (zone 5).
 const PRODUCTS = {
   tower: {
     name: "Shahyad Tower — Compact Model",
@@ -116,7 +122,7 @@ const PRODUCTS = {
       compat:  { name: "Compatible bricks edition", unitAmount: 57300 },
       genuine: { name: "Genuine LEGO® elements edition", unitAmount: 97300 }
     },
-    shipping: { AU: 3900, NZ: 11500, ASIA: 15500, WORLD: 20500 },
+    shipping: { AU: 3900, NZ: 9500, ASIA: 12900, EUNA: 15900, WORLD: 20500 },
     description:
       "2,673-piece brick model of the Shahyad (Azadi) Tower on its display footing. " +
       "Printed step-by-step instruction book included. Delivery within 35 calendar days in Australia; " +
@@ -130,7 +136,7 @@ const PRODUCTS = {
       compat:  { name: "Compatible bricks edition", unitAmount: 89100 },
       genuine: { name: "Genuine LEGO® elements edition", unitAmount: 169100 }
     },
-    shipping: { AU: 5500, NZ: 13500, ASIA: 18500, WORLD: 23900 },
+    shipping: { AU: 5500, NZ: 9900, ASIA: 13500, EUNA: 16900, WORLD: 21500 },
     description:
       "3,279-piece brick model of the Shahyad (Azadi) Tower on its full square with " +
       "lamp posts. This edition ships without the decorative trees shown in renders. " +
@@ -144,7 +150,7 @@ const PRODUCTS = {
     editions: {
       compat: { name: "Compatible bricks edition", unitAmount: 42900 }
     },
-    shipping: { AU: 3900, NZ: 11500, ASIA: 15500, WORLD: 20500 },
+    shipping: { AU: 3500, NZ: 7500, ASIA: 10500, EUNA: 12900, WORLD: 16500 },
     description:
       "2,917-piece brick sculpture of Arash the Archer at full draw, inspired by the " +
       "statue at Sa'dabad, Tehran. Digital 185-page building instructions (printable) and " +
@@ -158,7 +164,7 @@ const PRODUCTS = {
     editions: {
       compat: { name: "Compatible bricks edition", unitAmount: 32900 }
     },
-    shipping: { AU: 3900, NZ: 11500, ASIA: 15500, WORLD: 20500 },
+    shipping: { AU: 2900, NZ: 5900, ASIA: 8500, EUNA: 9900, WORLD: 12500 },
     description:
       "1,199-piece brick model of the Khaju Bridge, Isfahan — the central Shahneshin " +
       "pavilion and three river bays to each side, with the pool upstream and stepped " +
@@ -173,7 +179,7 @@ const PRODUCTS = {
     editions: {
       compat: { name: "Compatible bricks edition", unitAmount: 13900 }
     },
-    shipping: { AU: 3900, NZ: 11500, ASIA: 15500, WORLD: 20500 },
+    shipping: { AU: 2900, NZ: 4500, ASIA: 6500, EUNA: 7500, WORLD: 9500 },
     description:
       "632-piece brick model of the Hafezieh, Shiraz \u2014 the memorial pavilion over the " +
       "tomb of the poet Hafez, with its eight columns, copper-green dome, stepped plinth " +
