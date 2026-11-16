@@ -150,6 +150,21 @@ const PRODUCTS = {
       "statue at Sa'dabad, Tehran. Digital 185-page building instructions (printable) and " +
       "two printed bilingual plaque labels included. Delivery within 35 calendar days in " +
       "Australia; international orders take longer (transfer and customs)."
+  },
+  khaju: {
+    name: "Khaju Bridge — Central Pavilion & River Section",
+    pieces: 1199,
+    size: "51.2 × 25.6 × 13.1 cm (64 × 32 studs)",
+    editions: {
+      compat: { name: "Compatible bricks edition", unitAmount: 32900 }
+    },
+    shipping: { AU: 3900, NZ: 11500, ASIA: 15500, WORLD: 20500 },
+    description:
+      "1,199-piece brick model of the Khaju Bridge, Isfahan — the central Shahneshin " +
+      "pavilion and three river bays to each side, with the pool upstream and stepped " +
+      "sluices downstream, on a display base with river. Digital 90-page building " +
+      "instructions (printable) included. Delivery within 35 calendar days in Australia; " +
+      "international orders take longer (transfer and customs)."
   }
 };
 
