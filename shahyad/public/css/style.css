@@ -225,3 +225,11 @@ footer .legal { max-width: 52rem; }
   transition: border-color 0.2s ease;
 }
 .hero-collage a:hover img, .hero-collage a:focus-visible img { border-color: var(--turquoise-bright); }
+
+/* promo band */
+.promo-band {
+  text-align: center; padding: 0.55rem 1rem; font-size: 0.92rem;
+  background: var(--night-raised); color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+.promo-band strong { color: var(--turquoise-bright); font-weight: 500; }

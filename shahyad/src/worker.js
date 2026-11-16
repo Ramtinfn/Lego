@@ -252,6 +252,7 @@ async function handleCheckout(request, env, origin) {
 
   const params = new URLSearchParams();
   params.append("mode", "payment");
+  params.append("allow_promotion_codes", "true");
   params.append("success_url", `${origin}/success.html?session_id={CHECKOUT_SESSION_ID}`);
   params.append("cancel_url", `${origin}/cancel.html`);
   params.append("line_items[0][quantity]", String(quantity));
