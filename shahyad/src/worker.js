@@ -165,6 +165,21 @@ const PRODUCTS = {
       "sluices downstream, on a display base with river. Digital 90-page building " +
       "instructions (printable) included. Delivery within 35 calendar days in Australia; " +
       "international orders take longer (transfer and customs)."
+  },
+  hafezieh: {
+    name: "Hafezieh — Tomb of Hafez Pavilion",
+    pieces: 632,
+    size: "22.4 \u00d7 22.4 \u00d7 17.4 cm (28 \u00d7 28 studs)",
+    editions: {
+      compat: { name: "Compatible bricks edition", unitAmount: 10900 }
+    },
+    shipping: { AU: 3900, NZ: 11500, ASIA: 15500, WORLD: 20500 },
+    description:
+      "632-piece brick model of the Hafezieh, Shiraz \u2014 the memorial pavilion over the " +
+      "tomb of the poet Hafez, with its eight columns, copper-green dome, stepped plinth " +
+      "and garden. Digital 65-page building instructions (printable) included. Delivery " +
+      "within 35 calendar days in Australia; international orders take longer (transfer " +
+      "and customs)."
   }
 };
 
