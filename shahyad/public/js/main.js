@@ -235,6 +235,83 @@
     });
   }
 
+  /* Sticky order bar (phones): shows the model being read and its price,
+     one tap scrolls to that model's order panel. Hidden while the panel
+     itself is on screen, and entirely absent on wide screens (CSS). */
+  function initStickyOrderBar(data) {
+    if (!("IntersectionObserver" in window)) return;
+    var models = Object.keys(data.products);
+    var sections = models
+      .map(function (id) { return document.getElementById(id); })
+      .filter(Boolean);
+    if (!sections.length) return;
+
+    var bar = document.createElement("div");
+    bar.id = "sticky-order";
+    bar.hidden = true;
+    bar.innerHTML =
+      '<div class="so-info"><span class="so-name"></span>' +
+      '<span class="so-price"></span></div>' +
+      '<button type="button" class="btn so-btn">Order</button>';
+    document.body.appendChild(bar);
+    var nameEl = bar.querySelector(".so-name");
+    var priceEl = bar.querySelector(".so-price");
+
+    var SHORT = { tower: "Shahyad Tower", square: "Shahyad Square",
+      arash: "Arash the Archer", khaju: "Khaju Bridge", hafezieh: "The Hafezieh" };
+    function priceFor(id) {
+      var eds = data.products[id].editions;
+      var keys = Object.keys(eds);
+      var min = keys.reduce(function (m, k) {
+        return Math.min(m, eds[k].unitAmount);
+      }, Infinity);
+      return (keys.length > 1 ? "from " : "") + money(min);
+    }
+
+    var current = null;
+    var panelVisible = {};
+    function refreshBar() {
+      var show = !!current && !panelVisible[current];
+      if (show) {
+        nameEl.textContent = SHORT[current] || data.products[current].name;
+        priceEl.textContent = priceFor(current);
+      }
+      bar.hidden = !show;
+    }
+
+    /* The section crossing the middle band of the viewport is "current". */
+    var secIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) current = e.target.id;
+        else if (current === e.target.id) current = null;
+      });
+      refreshBar();
+    }, { rootMargin: "-40% 0px -40% 0px" });
+    sections.forEach(function (s) { secIO.observe(s); });
+
+    /* Hide the bar while an order panel is on screen. */
+    var panelIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        panelVisible[e.target.getAttribute("data-model")] = e.isIntersecting;
+      });
+      refreshBar();
+    }, { threshold: 0.15 });
+    document.querySelectorAll(".order-panel[data-model]").forEach(function (p) {
+      panelIO.observe(p);
+    });
+
+    bar.querySelector(".so-btn").addEventListener("click", function () {
+      var m = current;
+      if (!m) return;
+      var panel = document.querySelector('.order-panel[data-model="' + m + '"]');
+      if (panel) panel.scrollIntoView({ behavior: "smooth", block: "center" });
+      track("sticky_order_click", {
+        content_name: data.products[m].name,
+        items: [itemFor(data, m, "compat")]
+      });
+    });
+  }
+
   fetch("/api/catalogue")
     .then(function (r) { return r.json(); })
     .then(function (data) {
@@ -246,6 +323,7 @@
         setupPanel(panel, data);
       });
       watchViewItem(data);
+      try { initStickyOrderBar(data); } catch (e) { /* non-essential */ }
       document.querySelectorAll("[data-model-link]").forEach(function (el) {
         el.addEventListener("click", function () {
           var m = el.getAttribute("data-model-link");

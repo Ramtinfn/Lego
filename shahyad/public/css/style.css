@@ -233,3 +233,46 @@ footer .legal { max-width: 52rem; }
   border-bottom: 1px solid var(--line);
 }
 .promo-band strong { color: var(--turquoise-bright); font-weight: 500; }
+
+/* ---- Sticky order bar (phones only) -------------------------------- */
+#sticky-order {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.55rem 1rem;
+  padding-bottom: calc(0.55rem + env(safe-area-inset-bottom, 0px));
+  background: var(--night-deep);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.4);
+}
+#sticky-order[hidden] { display: none; }
+#sticky-order .so-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35;
+}
+#sticky-order .so-name {
+  font-size: 0.82rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#sticky-order .so-price {
+  font-family: "Marcellus", "Spectral", serif;
+  font-size: 1.05rem;
+  color: var(--marble);
+}
+#sticky-order .so-btn {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0.55rem 1.4rem;
+}
+@media (min-width: 761px) {
+  #sticky-order { display: none !important; }
+}
