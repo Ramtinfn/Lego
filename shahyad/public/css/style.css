@@ -236,7 +236,13 @@ footer .legal { max-width: 52rem; }
 
 /* ---- Faravahar creed (top of hero) --------------------------------- */
 .creed { text-align: center; padding: 2.4rem 1rem 0; }
-.creed .faravahar { display: block; margin: 0 auto 0.65rem; }
+.creed .faravahar {
+  display: block;
+  margin: 0 auto 0.8rem;
+  width: 168px;
+  height: auto;
+  border-radius: 8px;
+}
 .creed-fa { font-size: 1.08rem; color: var(--marble); }
 .creed-en {
   font-size: 0.74rem;
@@ -247,6 +253,6 @@ footer .legal { max-width: 52rem; }
 }
 @media (max-width: 760px) {
   .creed { padding-top: 1.7rem; }
-  .creed .faravahar { width: 96px; height: 56px; }
+  .creed .faravahar { width: 132px; }
   .creed-en { font-size: 0.66rem; letter-spacing: 0.15em; }
 }
