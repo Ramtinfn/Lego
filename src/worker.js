@@ -62,6 +62,13 @@ export default {
     const url = new URL(request.url);
     const blocked = restrictedJurisdiction(request, url);
     if (blocked) return blockedResponse(blocked);
+
+    // Canonical host: www -> apex (301), so search engines index one host.
+    if (url.hostname.startsWith("www.")) {
+      url.hostname = url.hostname.slice(4);
+      return Response.redirect(url.toString(), 301);
+    }
+
     return env.ASSETS.fetch(request);
   }
 };
