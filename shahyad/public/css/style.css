@@ -255,6 +255,7 @@ footer .legal { max-width: 52rem; }
   .creed { padding-top: 1.7rem; }
   .creed .faravahar { width: 132px; }
   .creed-en { font-size: 0.66rem; letter-spacing: 0.15em; }
+}
 
 /* ---- Sticky order bar (phones only) -------------------------------- */
 #sticky-order {
